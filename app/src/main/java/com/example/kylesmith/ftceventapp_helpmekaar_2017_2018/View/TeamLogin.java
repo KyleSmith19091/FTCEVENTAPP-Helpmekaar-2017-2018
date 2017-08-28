@@ -20,12 +20,11 @@ public class TeamLogin extends AppCompatActivity {
     //Vars
     EditText etxtTeamNumberLogin;
     Button btnLoginDone;
-    ArrayList<TeamQualities> teamQualitiesArrayList;
 
     //Objects
     DBTeamIDs dbTeamIDs;
 
-
+    ///////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +33,21 @@ public class TeamLogin extends AppCompatActivity {
         loginButtonPressed();
 
     }
+    /////////////////
 
     //init vars
     private void allocateVars(){
 
         etxtTeamNumberLogin = (EditText) findViewById(R.id.etxtTeamNumberLogin);
         etxtTeamNumberLogin.setText("Enter team number here");
+        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
         btnLoginDone = (Button) findViewById(R.id.btnLoginDone);
         dbTeamIDs = new DBTeamIDs(this);
-        teamQualitiesArrayList = dbTeamIDs.getData();
+
     }
 
-    //Click listener for the login button
+    //Click listener for the login button to check if team number is registered in the database //Data will hopefully be by FIRST
+
     private void loginButtonPressed(){
 
         btnLoginDone.setOnClickListener(new View.OnClickListener() {
@@ -55,20 +57,20 @@ public class TeamLogin extends AppCompatActivity {
 
                     if(dbTeamIDs.getTeamNumber().contains(etxtTeamNumberLogin.getText().toString() )){
 
+                        //TODO: Change the activity this goes to
                         Intent g = new Intent(TeamLogin.this, SplashScreen.class);
                         startActivity(g);
 
                     }else{
 
                         Toast.makeText(TeamLogin.this, "Team not registered please ask an official FIRST employee about problem", Toast.LENGTH_SHORT).show();
+
                     }
 
-
-
             }
-        });
+        });//End of onclick listener for the login button
 
     }
 
 
-}
+}//End of class

@@ -10,12 +10,13 @@ public class TeamQualities {
 
     private String sTeamNumber;
 
-    //Constructor
+    //Constructor for both vars
     public TeamQualities(String sTeamName, String sTeamNumber) {
         this.sTeamName = sTeamName;
         this.sTeamNumber = sTeamNumber;
     }
 
+    //Constructor for teamnumber
     public TeamQualities(String sTeamNumber){
 
         this.sTeamNumber = sTeamNumber;

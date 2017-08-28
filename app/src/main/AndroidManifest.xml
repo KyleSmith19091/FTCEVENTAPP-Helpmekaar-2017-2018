@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.TeamLogin"></activity>
+        <activity android:name=".View.TeamLogin" />
+        <activity android:name=".View.GeneralPortal"></activity>
     </application>
 
 </manifest>

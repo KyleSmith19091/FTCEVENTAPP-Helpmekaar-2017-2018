@@ -10,19 +10,23 @@ import com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.R;
 
 public class SplashScreen extends AppCompatActivity {
 
+    //Objects
+    Thread thread = new Thread();
+
+
+    /////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        Button btnNext = (Button) findViewById(R.id.btnNext);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent t = new Intent(SplashScreen.this, TeamLogin.class);
-                startActivity(t);
+        Intent t = new Intent(SplashScreen.this, TeamLogin.class);
+        try {
+            thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        startActivity(t);
             }
-        });
+    ////////////////////
+    }//End of the class
 
-    }
-}

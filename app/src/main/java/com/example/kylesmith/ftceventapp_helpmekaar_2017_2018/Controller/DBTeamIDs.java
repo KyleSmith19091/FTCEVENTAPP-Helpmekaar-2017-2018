@@ -31,6 +31,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
     }
 
 
+    ////////////////////
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -41,7 +42,10 @@ public class DBTeamIDs extends SQLiteOpenHelper{
 
 
     }
+    //////////////////
 
+    /////////////////
+    //Checks if a database has already been created if not it will create one
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
@@ -49,6 +53,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
         onCreate(db);
 
     }
+    ////////////////
 
     //Getter that returns all the data from the database table 1
     public ArrayList<TeamQualities> getData(){
@@ -69,6 +74,8 @@ public class DBTeamIDs extends SQLiteOpenHelper{
         return arrlData;
     }
 
+
+
     public ArrayList<String> getTeamNumber(){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -85,6 +92,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
 
 
 
+    //Inserts a team into the databse and the correct table if needed and check ifvalues match up t prevent a SQL attack
     public boolean insertTeam(String sTeamNumber, String sTeamName){
         SQLiteDatabase db = getWritableDatabase();
         //Allows us to insert data and checks that data matches
@@ -101,9 +109,8 @@ public class DBTeamIDs extends SQLiteOpenHelper{
             return true;
 
         }
-
-
     }
+
 
     //TODO: Check this method out not sure how it works?
     public boolean deleteTeam(String sTeamNumber){
@@ -125,4 +132,4 @@ public class DBTeamIDs extends SQLiteOpenHelper{
     }
 
 
-}
+}//End of the class
