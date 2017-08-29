@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Version 1.0"
+        android:text="Pre-Alpha Build"
         android:id="@+id/textView3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

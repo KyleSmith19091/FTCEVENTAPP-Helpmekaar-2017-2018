@@ -66,7 +66,9 @@ public class TeamLogin extends AppCompatActivity {
 
                     }else{
 
-                        Toast.makeText(TeamLogin.this, "Team not registered please ask an official FIRST employee about problem", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
+                        etxtTeamNumberLogin.setText("Enter team number here");
+                        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
 
                     }
 
