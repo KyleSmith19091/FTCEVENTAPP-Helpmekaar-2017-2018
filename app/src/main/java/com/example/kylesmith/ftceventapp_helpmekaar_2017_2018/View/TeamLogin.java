@@ -1,19 +1,15 @@
 package com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.View;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.Controller.DBTeamIDs;
-import com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.Model.TeamQualities;
 import com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.R;
-
-import java.util.ArrayList;
 
 public class TeamLogin extends AppCompatActivity {
 
@@ -30,6 +26,7 @@ public class TeamLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_login);
         allocateVars();
+        setCustomEditableTextViewProperties();
         loginButtonPressed();
 
     }
@@ -39,10 +36,17 @@ public class TeamLogin extends AppCompatActivity {
     private void allocateVars(){
 
         etxtTeamNumberLogin = (EditText) findViewById(R.id.etxtTeamNumberLogin);
-        etxtTeamNumberLogin.setText("Enter team number here");
-        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
         btnLoginDone = (Button) findViewById(R.id.btnLoginDone);
         dbTeamIDs = new DBTeamIDs(this);
+
+    }
+
+    //Set custom properties for the editable textview
+    private void setCustomEditableTextViewProperties(){
+
+        etxtTeamNumberLogin.setText("Enter team number here");
+        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+        etxtTeamNumberLogin.setTextIsSelectable(true);
 
     }
 
@@ -57,8 +61,7 @@ public class TeamLogin extends AppCompatActivity {
 
                     if(dbTeamIDs.getTeamNumber().contains(etxtTeamNumberLogin.getText().toString() )){
 
-                        //TODO: Change the activity this goes to
-                        Intent g = new Intent(TeamLogin.this, SplashScreen.class);
+                        Intent g = new Intent(TeamLogin.this, GeneralPortal.class);
                         startActivity(g);
 
                     }else{
@@ -70,7 +73,6 @@ public class TeamLogin extends AppCompatActivity {
             }
         });//End of onclick listener for the login button
 
-    }
-
+    }//End of login button pressed method
 
 }//End of class
