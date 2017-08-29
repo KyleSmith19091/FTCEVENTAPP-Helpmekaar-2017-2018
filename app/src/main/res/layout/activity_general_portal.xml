@@ -15,7 +15,8 @@
         android:layout_gravity="start"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></android.support.design.widget.NavigationView>
+        android:layout_alignParentEnd="true"
+        app:headerLayout="@layout/navigation_header"></android.support.design.widget.NavigationView>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -37,7 +38,9 @@
             android:text="New Button"
             android:id="@+id/btnOptions"
             android:layout_gravity="left|top"
-            android:background="@drawable/optionsbutton" />
+            android:background="@drawable/optionsbutton"
+            android:padding="20dp"
+            android:paddingLeft="20dp" />
     </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>
