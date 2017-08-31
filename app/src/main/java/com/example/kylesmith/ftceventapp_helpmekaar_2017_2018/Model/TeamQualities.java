@@ -10,10 +10,16 @@ public class TeamQualities {
 
     private String sTeamNumber;
 
+    private String sTeamScore;
+
+    public TeamQualities(){
+    }
+
     //Constructor for both vars
-    public TeamQualities(String sTeamName, String sTeamNumber) {
+    public TeamQualities(String sTeamName, String sTeamNumber, String sTeamScore) {
         this.sTeamName = sTeamName;
         this.sTeamNumber = sTeamNumber;
+        this.sTeamScore = sTeamScore;
     }
 
     //Constructor for teamnumber
@@ -39,4 +45,16 @@ public class TeamQualities {
     public void setsTeamNumber(String sTeamNumber) {
         this.sTeamNumber = sTeamNumber;
     }
+
+    public String getsTeamScore() {
+        return sTeamScore;
+    }
+
+    public void setsTeamScore(String sTeamScore) {
+        this.sTeamScore = sTeamScore;
+    }
+
+
+
+
 }

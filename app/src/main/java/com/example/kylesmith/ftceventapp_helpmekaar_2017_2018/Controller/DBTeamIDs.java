@@ -26,6 +26,8 @@ public class DBTeamIDs extends SQLiteOpenHelper{
 
     private static final String TBL_1_COL_2 = "Team_number";
 
+    private static final String TBL_1_COL_3 = "Score";
+
     public DBTeamIDs(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -35,11 +37,10 @@ public class DBTeamIDs extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table " + TABLE_NAME1 + " (Team_name TEXT, Team_number TEXT)");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number ) VALUES('Null&Void', '14014')");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number ) VALUES('Geared Wings', '12345')");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number ) VALUES('The spinners', '14567')");
-
+        db.execSQL("create table " + TABLE_NAME1 + " (Team_name TEXT, Team_number TEXT, Score TEXT)");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Null&Void', '14014', '300')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Geared Wings', '12345', '400')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('The spinners', '14567', '500')");
 
     }
     //////////////////
@@ -66,7 +67,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
         while (res.moveToNext()){
             //Player stats constructor needs a string, int and int so in one line we have a position 0, 1 ,2
             //Adds data to an arraylist
-            arrlData.add(new TeamQualities(res.getString(0), res.getString(1)));
+            arrlData.add(new TeamQualities(res.getString(0), res.getString(1), res.getString(2)));
 
 
         }
@@ -90,15 +91,31 @@ public class DBTeamIDs extends SQLiteOpenHelper{
         return arrlData;
     }
 
+    public ArrayList<Integer> getTeamScore(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT " + TBL_1_COL_3 + " FROM " + TABLE_NAME1 + ";", null);
+        Integer.parseInt(res.toString());
+        ArrayList<Integer> arrlData = new ArrayList<>();
+        while (res.moveToNext()){
+
+            arrlData.add(res.getInt(0));
+
+        }
+
+        return arrlData;
+    }
 
 
-    //Inserts a team into the databse and the correct table if needed and check ifvalues match up t prevent a SQL attack
-    public boolean insertTeam(String sTeamNumber, String sTeamName){
+
+    //Inserts a team into the databse and the correct table if needed and check if values match up t prevent a SQL attack
+    public boolean insertTeam(String sTeamNumber, String sTeamName, String sTeamScore){
         SQLiteDatabase db = getWritableDatabase();
         //Allows us to insert data and checks that data matches
         ContentValues contentValue = new ContentValues();
         contentValue.put(TBL_1_COL_1, sTeamName);
         contentValue.put(TBL_1_COL_2, sTeamNumber);
+        contentValue.put(TBL_1_COL_3, sTeamScore);
         long result = db.insert(TABLE_NAME1, null, contentValue);
         if(result == -1){
 
@@ -128,6 +145,26 @@ public class DBTeamIDs extends SQLiteOpenHelper{
             return false;
 
         }
+
+    }
+
+    public void updateGameStats(String sTeamNumber) {
+
+        //Get the player stats of player
+        SQLiteDatabase db = this.getWritableDatabase();
+        //NB! If you ever get a error check this
+        Cursor res = db.rawQuery("SELECT Team_score FROM " + TABLE_NAME1 + " WHERE Team_number = " + "'" + sTeamNumber + "'", null);
+
+        ContentValues contentValue = new ContentValues();
+
+        res.moveToNext();
+        int wins = res.getInt(0);
+        int played = res.getInt(1);
+
+        contentValue.put(TBL_1_COL_2, wins);
+        contentValue.put(TBL_1_COL_3, played);
+
+        db.update(TABLE_NAME1, contentValue, "Name = ?", new String[]{sTeamNumber});
 
     }
 
