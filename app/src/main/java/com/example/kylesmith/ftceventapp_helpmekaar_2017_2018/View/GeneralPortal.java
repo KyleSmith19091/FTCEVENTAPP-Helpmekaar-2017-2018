@@ -45,7 +45,7 @@ public class GeneralPortal extends AppCompatActivity
         }
     }
 
-    //Add this if we wantto add settings to toolbar
+    //TODO: Add this if we want to add a settings button to the top right side of the toolbar
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,13 +76,14 @@ public class GeneralPortal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_Scoreboard) {
-            Intent t = new Intent(GeneralPortal.this, Scoreboard.class);
+            Intent t = new Intent(getApplicationContext(), Scoreboard.class);
             startActivity(t);
         } else if (id == R.id.nav_map) {
-            Intent m = new Intent(GeneralPortal.this, Scoreboard.class);
+            Intent m = new Intent(getApplicationContext(), Map.class);
             startActivity(m);
         } else if (id == R.id.nav_Game_Schedule) {
-
+            Intent g = new Intent(getApplicationContext(), GameSchedule.class);
+            startActivity(g);
         } else if (id == R.id.nav_Judging_Schedule) {
 
         }

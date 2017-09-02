@@ -1,6 +1,7 @@
 package com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.View;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +20,8 @@ public class TeamLogin extends AppCompatActivity {
 
     //Objects
     DBTeamIDs dbTeamIDs;
+    MediaPlayer accessGranted;
+    MediaPlayer accessDenied;
 
     ///////////////////////
     @Override
@@ -38,6 +41,8 @@ public class TeamLogin extends AppCompatActivity {
         etxtTeamNumberLogin = (EditText) findViewById(R.id.etxtTeamNumberLogin);
         btnLoginDone = (Button) findViewById(R.id.btnLoginDone);
         dbTeamIDs = new DBTeamIDs(this);
+        accessGranted = MediaPlayer.create(this, R.raw.access_granted);
+        accessDenied = MediaPlayer.create(this, R.raw.access_denied);
 
     }
 
@@ -61,11 +66,13 @@ public class TeamLogin extends AppCompatActivity {
 
                     if(dbTeamIDs.getTeamNumber().contains(etxtTeamNumberLogin.getText().toString() )){
 
+                        accessGranted.start();
                         Intent g = new Intent(TeamLogin.this, GeneralPortal.class);
                         startActivity(g);
 
                     }else{
 
+                        accessDenied.start();
                         Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
                         etxtTeamNumberLogin.setText("Enter team number here");
                         etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());

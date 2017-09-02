@@ -149,7 +149,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
     }
 
     public void updateGameStats(String sTeamNumber) {
-
+//////////////////////////////////////////////////////////
         //Get the player stats of player
         SQLiteDatabase db = this.getWritableDatabase();
         //NB! If you ever get a error check this
