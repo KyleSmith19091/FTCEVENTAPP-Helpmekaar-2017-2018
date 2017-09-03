@@ -38,9 +38,10 @@ public class DBTeamIDs extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table " + TABLE_NAME1 + " (Team_name TEXT, Team_number TEXT, Score TEXT)");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Null&Void', '14014', '300')");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Geared Wings', '12345', '400')");
-        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('The spinners', '14567', '500')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Null&Void', '14014', '125')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('Geared Wings', '12345', '345')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('The Spanners', '14567', '500')");
+        db.execSQL("INSERT INTO " + TABLE_NAME1 + " (Team_name, Team_number, Score ) VALUES('RoboWranglers', '14568', '700')");
 
     }
     //////////////////
@@ -61,7 +62,7 @@ public class DBTeamIDs extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getWritableDatabase();
         //Way to receive data(Stores data in object)
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + ";", null);
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " ORDER BY " + TBL_1_COL_3 + " DESC " + ";", null);
         ArrayList<TeamQualities> arrlData = new ArrayList<>();
         //Cursor checks if there is data in the next line and decides whether to continue
         while (res.moveToNext()){

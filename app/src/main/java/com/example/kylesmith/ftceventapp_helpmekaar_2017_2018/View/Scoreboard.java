@@ -15,7 +15,6 @@ public class Scoreboard extends AppCompatActivity {
     ListView lv;
     DBTeamIDs db;
     ArrayList<TeamQualities> items;
-    TeamQualities tm = new TeamQualities();
     Scoreboard_Teamqualities_Adapter TeamAdapter;
 
     @Override

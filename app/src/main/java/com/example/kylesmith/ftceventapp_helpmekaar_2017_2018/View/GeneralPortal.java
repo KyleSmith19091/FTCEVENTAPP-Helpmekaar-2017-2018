@@ -1,12 +1,18 @@
 package com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.View;
 
+import android.annotation.TargetApi;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -15,7 +21,13 @@ import com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.R;
 public class GeneralPortal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+    private MediaPlayer mp;
+
+
     ///////////////
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +35,6 @@ public class GeneralPortal extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Hi there!");
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -40,6 +51,8 @@ public class GeneralPortal extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            displayNotif();
+            noitfyNotif();
         } else {
             super.onBackPressed();
         }
@@ -84,6 +97,7 @@ public class GeneralPortal extends AppCompatActivity
         } else if (id == R.id.nav_Game_Schedule) {
             Intent g = new Intent(getApplicationContext(), GameSchedule.class);
             startActivity(g);
+
         } else if (id == R.id.nav_Judging_Schedule) {
 
         }
@@ -91,5 +105,38 @@ public class GeneralPortal extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void displayNotif(){
+
+
+
+        mBuilder.setSmallIcon(R.drawable.clockicon);
+
+        mBuilder.setContentTitle("ROBOT GAME");
+
+        mBuilder.setContentText("RED Alliance in 5 min : Board 2");
+
+        Intent t = new Intent(getApplicationContext(), Map.class);
+
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, t, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    }
+
+    private void noitfyNotif(){
+
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
+        Thread th = new Thread();
+        try {
+            th.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,8 +51,9 @@ public class TeamLogin extends AppCompatActivity {
     private void setCustomEditableTextViewProperties(){
 
         etxtTeamNumberLogin.setText("Enter team number here");
-        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
         etxtTeamNumberLogin.setTextIsSelectable(true);
+        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+
 
     }
 
@@ -75,6 +77,7 @@ public class TeamLogin extends AppCompatActivity {
                         accessDenied.start();
                         Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
                         etxtTeamNumberLogin.setText("Enter team number here");
+                        etxtTeamNumberLogin.setTextIsSelectable(true);
                         etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
 
                     }
@@ -83,5 +86,45 @@ public class TeamLogin extends AppCompatActivity {
         });//End of onclick listener for the login button
 
     }//End of login button pressed method
+
+
+    //If the enter button is pressed
+    private void enterButtonPressed(){
+
+        etxtTeamNumberLogin.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (i)
+                    {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            if(dbTeamIDs.getTeamNumber().contains(etxtTeamNumberLogin.getText().toString() )){
+
+                                accessGranted.start();
+                                Intent g = new Intent(TeamLogin.this, GeneralPortal.class);
+                                startActivity(g);
+
+                            }else{
+
+                                accessDenied.start();
+                                Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
+                                etxtTeamNumberLogin.setText("Enter team number here");
+                                etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+
+                            }
+                        default:
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+
+
+    }//End of enter button pressed method
 
 }//End of class

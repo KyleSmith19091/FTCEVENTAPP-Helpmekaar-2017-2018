@@ -21,6 +21,9 @@ public class Scoreboard_Teamqualities_Adapter extends ArrayAdapter<TeamQualities
         super(context, 0, TeamQualities);
     }
 
+    //Vars
+
+
     //It returns a view NB!!!
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -45,7 +48,7 @@ public class Scoreboard_Teamqualities_Adapter extends ArrayAdapter<TeamQualities
 
         txtScore.setText(currentList.getsTeamScore());
 
-        txtPos.setText("1");
+        txtPos.setText((position + 1) + "");
 
         txtTitle.setText(currentList.getsTeamName());
 
