@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.View.TeamLogin"
-    android:background="@drawable/background">
+    android:background="@drawable/blue_thing_background">
 
     <Button
         android:layout_width="wrap_content"
@@ -29,7 +29,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="55dp"
         android:text="Enter team number here"
-        android:textColorHighlight="@color/abc_input_method_navigation_guard" />
+        android:textColorHighlight="@color/abc_input_method_navigation_guard"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,5 +41,6 @@
         android:textStyle="bold"
         android:layout_above="@+id/etxtTeamNumberLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp" />
+        android:layout_marginBottom="62dp"
+        android:textColor="#ffffff" />
 </RelativeLayout>
