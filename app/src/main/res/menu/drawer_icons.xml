@@ -18,6 +18,11 @@
             android:id="@+id/nav_Scoreboard"
             android:icon="@drawable/listicon"
             android:title="Scoreboard" />
+
+        <item
+            android:id="@+id/nav_Scorecalculator"
+            android:icon="@drawable/calculator_icon"
+            android:title="Calculator" />
     </group>
 
 

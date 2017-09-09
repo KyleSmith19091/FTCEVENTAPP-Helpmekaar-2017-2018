@@ -53,12 +53,12 @@ public class TeamLogin extends AppCompatActivity {
         etxtTeamNumberLogin.setText("Enter team number here");
         etxtTeamNumberLogin.setTextIsSelectable(true);
         etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+        etxtTeamNumberLogin.requestFocus();
 
 
     }
 
     //Click listener for the login button to check if team number is registered in the database //Data will hopefully be by FIRST
-
     private void loginButtonPressed(){
 
         btnLoginDone.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +76,7 @@ public class TeamLogin extends AppCompatActivity {
 
                         accessDenied.start();
                         Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
-                        etxtTeamNumberLogin.setText("Enter team number here");
-                        etxtTeamNumberLogin.setTextIsSelectable(true);
-                        etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+                        setCustomEditableTextViewProperties();
 
                     }
 
@@ -88,7 +86,7 @@ public class TeamLogin extends AppCompatActivity {
     }//End of login button pressed method
 
 
-    //If the enter button is pressed
+    //If the enter button is pressed login
     private void enterButtonPressed(){
 
         etxtTeamNumberLogin.setOnKeyListener(new View.OnKeyListener() {
@@ -100,6 +98,7 @@ public class TeamLogin extends AppCompatActivity {
                     switch (i)
                     {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
+
                         case KeyEvent.KEYCODE_ENTER:
                             if(dbTeamIDs.getTeamNumber().contains(etxtTeamNumberLogin.getText().toString() )){
 
@@ -122,7 +121,7 @@ public class TeamLogin extends AppCompatActivity {
 
                 return false;
             }
-        });
+        });//End of click listener
 
 
     }//End of enter button pressed method

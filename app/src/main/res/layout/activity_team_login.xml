@@ -8,16 +8,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kylesmith.ftceventapp_helpmekaar_2017_2018.View.TeamLogin"
-    android:background="@drawable/blue_thing_background">
+    android:background="@drawable/team_login_test">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/btnLoginDone"
-        android:layout_marginBottom="179dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/etxtTeamNumberLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -25,22 +25,40 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/etxtTeamNumberLogin"
-        android:layout_above="@+id/btnLoginDone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
         android:text="Enter team number here"
         android:textColorHighlight="@color/abc_input_method_navigation_guard"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome FTC TEAM"
         android:id="@+id/textView"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:textStyle="bold"
-        android:layout_above="@+id/etxtTeamNumberLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/first_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/btnLoginDone"
+        android:layout_toStartOf="@+id/btnLoginDone" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/gundogsicon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

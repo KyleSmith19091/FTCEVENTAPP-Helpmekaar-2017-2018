@@ -51,7 +51,7 @@ public class GeneralPortal extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-            displayNotif();
+            displayRobotGameNotif();
             noitfyNotif();
         } else {
             super.onBackPressed();
@@ -100,6 +100,8 @@ public class GeneralPortal extends AppCompatActivity
 
         } else if (id == R.id.nav_Judging_Schedule) {
 
+        } else if(id == R.id.nav_Scorecalculator){
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,7 +109,8 @@ public class GeneralPortal extends AppCompatActivity
         return true;
     }
 
-    private void displayNotif(){
+    //TODO: Call this method in an other class when robot and judge schedule is setup
+    private void displayRobotGameNotif(){
 
 
 
@@ -119,7 +122,11 @@ public class GeneralPortal extends AppCompatActivity
 
         Intent t = new Intent(getApplicationContext(), Map.class);
 
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, t, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, t, 0);
+
+        mBuilder.setContentIntent(resultPendingIntent);
+
+
 
     }
 
