@@ -23,8 +23,18 @@
             android:id="@+id/nav_Scorecalculator"
             android:icon="@drawable/calculator_icon"
             android:title="Calculator" />
+
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/logout_icon"
+            android:title="Logout"/>
+
+        <item
+            android:id="@+id/nav_Exit"
+            android:icon="@drawable/exit_icon"
+            android:title="Exit" />
+
+
     </group>
-
-
 
 </menu>

@@ -31,7 +31,9 @@ public class TeamLogin extends AppCompatActivity {
         setContentView(R.layout.activity_team_login);
         allocateVars();
         setCustomEditableTextViewProperties();
+        etxtTeamNumberLoginPressed();
         loginButtonPressed();
+        enterButtonPressed();
 
     }
     /////////////////
@@ -87,10 +89,11 @@ public class TeamLogin extends AppCompatActivity {
 
 
     //If the enter button is pressed login
+
     private void enterButtonPressed(){
 
         etxtTeamNumberLogin.setOnKeyListener(new View.OnKeyListener() {
-            @Override
+
             public boolean onKey(View view, int i, KeyEvent event) {
 
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
@@ -109,9 +112,7 @@ public class TeamLogin extends AppCompatActivity {
                             }else{
 
                                 accessDenied.start();
-                                Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
-                                etxtTeamNumberLogin.setText("Enter team number here");
-                                etxtTeamNumberLogin.setSelection(0, etxtTeamNumberLogin.getText().length());
+                                setCustomEditableTextViewProperties();
 
                             }
                         default:
@@ -125,5 +126,19 @@ public class TeamLogin extends AppCompatActivity {
 
 
     }//End of enter button pressed method
+
+    private void etxtTeamNumberLoginPressed(){
+
+
+        etxtTeamNumberLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                setCustomEditableTextViewProperties();
+
+            }
+        });
+
+    }
 
 }//End of class

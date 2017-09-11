@@ -102,6 +102,13 @@ public class GeneralPortal extends AppCompatActivity
 
         } else if(id == R.id.nav_Scorecalculator){
 
+        }else if(id == R.id.nav_Exit){
+            android.os.Process.killProcess(android.os.Process.myPid());
+            finish();
+        }else if(id == R.id.nav_Logout){
+            Intent d = new Intent(getApplicationContext(), TeamLogin.class);
+            startActivity(d);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
