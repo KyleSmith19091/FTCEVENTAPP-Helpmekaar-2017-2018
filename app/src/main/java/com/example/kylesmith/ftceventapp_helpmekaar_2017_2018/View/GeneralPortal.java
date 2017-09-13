@@ -105,6 +105,7 @@ public class GeneralPortal extends AppCompatActivity
         }else if(id == R.id.nav_Exit){
             android.os.Process.killProcess(android.os.Process.myPid());
             finish();
+            System.exit(0);
         }else if(id == R.id.nav_Logout){
             Intent d = new Intent(getApplicationContext(), TeamLogin.class);
             startActivity(d);

@@ -112,6 +112,7 @@ public class TeamLogin extends AppCompatActivity {
                             }else{
 
                                 accessDenied.start();
+                                Toast.makeText(TeamLogin.this, "TEAM NUMBER NOT FOUND!", Toast.LENGTH_SHORT).show();
                                 setCustomEditableTextViewProperties();
 
                             }
